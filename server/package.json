@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.js",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=development node --watch ./src/main.js --enable-turbo-mode",
+    "start:prod": "cross-env NODE_ENV=production node --watch ./src/main.js --enable-turbo-mode",
+    "format": "npx prettier . --write",
+    "format:check": "npx prettier . --check"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "http-errors": "^2.0.1",
+    "joi": "^18.2.3",
+    "morgan": "^1.11.0",
+    "mysql2": "^3.23.3",
+    "node-cron": "^4.6.0",
+    "sequelize": "^6.37.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.0.1",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "prettier": "3.9.6",
+    "sequelize-cli": "^6.6.5"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  }
+}
