@@ -8,5 +8,6 @@ export default (err, req, res, next) => {
     message: err.message || 'Internal Server Error',
     stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
+  
   next();
 };
