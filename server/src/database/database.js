@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 import config from '#/config/config.js';
 
 const sequelize = new Sequelize(config.DB_URI, {
@@ -8,4 +8,7 @@ const sequelize = new Sequelize(config.DB_URI, {
   },
 });
 
-export default sequelize;
+export default {
+  sequelize,
+  DataTypes,
+};
