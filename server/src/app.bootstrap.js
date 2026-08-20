@@ -1,5 +1,5 @@
 import express from 'express';
-import middleware from '#/common/middleware/index.js';
+import middleware from '#/common/structure/index.js';
 import config from '#/config/config.js';
 import { connection } from '#/database/index.js';
 import modules from '#/module/index.js';
