@@ -19,7 +19,9 @@ const bootstrap = async () => {
         console.log(`app url :  http://${config.BACKEND_URL + ':' + config.PORT} `);
       });
     })
-    .catch(() => {
+    .catch((err) => {
+      config.NODE_ENV == 'development' ? console.log(err) : undefined;
+
       console.log('---');
       console.log('error in database connection');
       return process.exit(1);
