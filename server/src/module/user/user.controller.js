@@ -1,4 +1,4 @@
-import structure from '#/common/structure/index.js'
+import structure from '#/common/structure/_index.js'
 import express from 'express';
 const router = express();
 

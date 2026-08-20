@@ -1,4 +1,4 @@
-import { connection } from '#/database/index.js';
+import { connection } from '#/database/_index.js';
 const CommentModel = connection.sequelize.define(
   'Comment',
   {

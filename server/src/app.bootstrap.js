@@ -1,8 +1,8 @@
 import express from 'express';
-import middleware from '#/common/structure/index.js';
+import middleware from '#/common/structure/_index.js';
 import config from '#/config/config.js';
-import { connection } from '#/database/index.js';
-import modules from '#/module/index.js';
+import { connection } from '#/database/_index.js';
+import modules from '#/module/_index.js';
 const app = express();
 
 app.use('/user', modules.userController);

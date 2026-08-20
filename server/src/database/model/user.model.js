@@ -1,4 +1,4 @@
-import { connection } from '#/database/index.js';
+import { connection } from '#/database/_index.js';
 import createError from 'http-errors';
 const UserModel = connection.sequelize.define(
   'User',
