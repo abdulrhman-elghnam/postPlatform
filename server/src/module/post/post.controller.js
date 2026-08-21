@@ -9,12 +9,12 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:postId', async (req, res) => {
-  const serviceFeedback = await service.deletePostService(req.params.postId ,req.body);
+  const serviceFeedback = await service.deletePostService(req.params.postId, req.body);
   return structure.sendSuccess(res, serviceFeedback);
 });
 
 router.get('/details', async (req, res) => {
-  const serviceFeedback = await service.retrievePostDetails(req.body);
+  const serviceFeedback = await service.retrievePostDetails();
   return structure.sendSuccess(res, serviceFeedback);
 });
 

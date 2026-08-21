@@ -1,0 +1,26 @@
+import structure from '#/common/structure/_index.js';
+import service from './comment.service.js';
+import { Router } from 'express';
+const router = Router();
+
+router.post('/', async (req, res) => {
+  const serviceFeedback = await service.createCommentService(req.body);
+  return structure.sendSuccess(res, serviceFeedback);
+});
+
+// router.delete('/:postId', async (req, res) => {
+//   const serviceFeedback = await service.deletePostService(req.params.postId, req.body);
+//   return structure.sendSuccess(res, serviceFeedback);
+// });
+
+// router.get('/details', async (req, res) => {
+//   const serviceFeedback = await service.retrievePostDetails();
+//   return structure.sendSuccess(res, serviceFeedback);
+// });
+
+// router.get('/comment-count', async (req, res) => {
+//   const serviceFeedback = await service.retrievePostDetailsWithCommentCount(req.body);
+//   return structure.sendSuccess(res, serviceFeedback);
+// });
+
+export default router;

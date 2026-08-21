@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.use('/users', modules.userController);
 app.use('/posts', modules.postController);
+app.use('/comments', modules.postController);
 
 app.use(middleware.globalHandler);
 const bootstrap = async () => {

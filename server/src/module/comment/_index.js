@@ -1,1 +1,1 @@
-export * from './model/comment.model.js';
+export { default as commentController } from './comment.controller.js';

@@ -15,13 +15,13 @@ async function createUserService(data) {
 async function updateUserService(id, data) {
   const user = await model.UserModel.findByPk(id);
   if (!user) throw createError(404, 'user not found');
-  const queryResult = await model.UserModel.update(data, {
+  const queryResult = await model.UserModel.upsert(data, {
     where: {
       id: id,
     },
     validate: false,
   });
-  return { statusCode: 200, message: 'updated', data: queryResult };
+  return { statusCode: 200, message: 'created or updated successfully', data: queryResult };
 }
 
 async function findUserByEmailServices(email) {

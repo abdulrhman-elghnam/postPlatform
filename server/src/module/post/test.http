@@ -24,3 +24,14 @@ Content-Type: application/json
 {
     "UserId" : 1
 }
+
+###
+get http://127.0.0.1:8080/posts/details
+Content-Type: application/json
+
+{
+    "UserId" : 1
+}
+###
+get http://127.0.0.1:8080/posts/comment-count
+Content-Type: application/json
