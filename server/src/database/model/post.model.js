@@ -6,7 +6,7 @@ const PostModel = connection.sequelize.define(
       type: connection.DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      field: 'PostOd',
+      field: 'PostId',
     },
     title: {
       type: connection.DataTypes.STRING(255),

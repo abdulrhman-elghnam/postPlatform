@@ -3,9 +3,12 @@ import middleware from '#/common/structure/_index.js';
 import config from '#/config/config.js';
 import { connection } from '#/database/_index.js';
 import modules from '#/module/_index.js';
+import structure from '#/common/structure/_index.js';
 const app = express();
 
-app.use('/user', modules.userController);
+app.use(express.json());
+
+app.use('/users', modules.userController);
 
 app.use(middleware.globalHandler);
 const bootstrap = async () => {
@@ -14,7 +17,7 @@ const bootstrap = async () => {
     .then(async () => {
       console.log('---');
       console.log('database connected successfully');
-      await connection.sequelize.sync({ alter: true, force: true });
+      await connection.sequelize.sync({ alter: true, force: false });
       return app.listen(config.PORT, config.BACKEND_URL, () => {
         console.log(`app url :  http://${config.BACKEND_URL + ':' + config.PORT} `);
       });
@@ -27,5 +30,12 @@ const bootstrap = async () => {
       return process.exit(1);
     });
 };
+
+app.get("/", (req, res) => {
+  structure.sendSuccess(res, "welcome to backend api", 404, undefined)
+})
+app.all("/{*any}", (req, res) => {
+  structure.sendSuccess(res, "route not found", 404, undefined)
+})
 
 export default bootstrap;

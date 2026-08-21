@@ -16,6 +16,7 @@ const UserModel = connection.sequelize.define(
     },
     email: {
       type: connection.DataTypes.STRING,
+      unique: true,
       allowNull: false,
       field: 'UserEmail',
       validate: {
@@ -27,7 +28,12 @@ const UserModel = connection.sequelize.define(
       allowNull: false,
       field: 'UserPassword',
       validate: {
-        min: 7,
+        checkPasswordLength() {
+          const password = this.getDataValue('password');
+          return password.length <= 6
+            ? createError(409, 'password should be greater than 6 char ')
+            : undefined;
+        },
       },
     },
     role: {
