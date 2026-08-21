@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/users', modules.userController);
+app.use('/posts', modules.postController);
 
 app.use(middleware.globalHandler);
 const bootstrap = async () => {
@@ -31,11 +32,11 @@ const bootstrap = async () => {
     });
 };
 
-app.get("/", (req, res) => {
-  structure.sendSuccess(res, "welcome to backend api", 404, undefined)
-})
-app.all("/{*any}", (req, res) => {
-  structure.sendSuccess(res, "route not found", 404, undefined)
-})
+app.get('/', (req, res) => {
+  structure.sendSuccess(res, 'welcome to backend api', 404, undefined);
+});
+app.all('/{*any}', (req, res) => {
+  structure.sendSuccess(res, 'route not found', 404, undefined);
+});
 
 export default bootstrap;

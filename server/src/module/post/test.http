@@ -1,0 +1,19 @@
+POST http://127.0.0.1:8080/posts
+Content-Type: application/json
+
+{
+    "UserId" : 2,
+    "title" : "first post",
+    "content" : "iefjwnrflbreljsvbgiortshbivo;grtdbt"
+}
+
+###
+POST http://127.0.0.1:8080/users/signup
+Content-Type: application/json
+
+{
+    "name" : "abdulrhman",
+    "email" : "abd@gmail.com",
+    "role" : "admin",
+    "password" : "123456789"
+}
