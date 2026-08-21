@@ -53,7 +53,6 @@ const UserModel = connection.sequelize.define(
         checkNameLength();
       },
     },
-    // paranoid: true,
     timestamps: true,
   },
 );

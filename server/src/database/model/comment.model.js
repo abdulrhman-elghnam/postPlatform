@@ -15,7 +15,6 @@ const CommentModel = connection.sequelize.define(
     },
   },
   {
-    // paranoid: true,
     timestamps: true,
   },
 );

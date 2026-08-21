@@ -2,7 +2,7 @@ POST http://127.0.0.1:8080/posts
 Content-Type: application/json
 
 {
-    "UserId" : 2,
+    "UserId" : 1,
     "title" : "first post",
     "content" : "iefjwnrflbreljsvbgiortshbivo;grtdbt"
 }
@@ -16,4 +16,11 @@ Content-Type: application/json
     "email" : "abd@gmail.com",
     "role" : "admin",
     "password" : "123456789"
+}
+###
+delete http://127.0.0.1:8080/posts/2
+Content-Type: application/json
+
+{
+    "UserId" : 1
 }

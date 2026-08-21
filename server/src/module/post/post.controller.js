@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:postId', async (req, res) => {
-  const serviceFeedback = await service.deletePostService(req.body);
+  const serviceFeedback = await service.deletePostService(req.params.postId ,req.body);
   return structure.sendSuccess(res, serviceFeedback);
 });
 
