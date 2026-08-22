@@ -1,1 +1,261 @@
-{}
+{
+    "info": {
+        "name": "Sequelize Blog API",
+        "description": "Postman collection for the users, posts, and comments API.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://127.0.0.1:8080"
+        },
+        {
+            "key": "userId",
+            "value": "1"
+        },
+        {
+            "key": "postId",
+            "value": "1"
+        },
+        {
+            "key": "commentId",
+            "value": "1"
+        }
+    ],
+    "item": [
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "Sign up",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Abdulrahman\",\n  \"email\": \"abd@example.com\",\n  \"password\": \"123456789\",\n  \"role\": \"user\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/users/signup"
+                    }
+                },
+                {
+                    "name": "Get user by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/users/{{userId}}"
+                    }
+                },
+                {
+                    "name": "Find user by email",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/users/by-email?email=abd@example.com",
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "abd@example.com"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update user",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": {{userId}},\n  \"name\": \"Updated User\",\n  \"email\": \"abd@example.com\",\n  \"password\": \"123456789\",\n  \"role\": \"user\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/users/{{userId}}"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Posts",
+            "item": [
+                {
+                    "name": "Create post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"UserId\": {{userId}},\n  \"title\": \"First post\",\n  \"content\": \"A first post from Postman.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/posts"
+                    }
+                },
+                {
+                    "name": "Delete post",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"UserId\": {{userId}}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/posts/{{postId}}"
+                    }
+                },
+                {
+                    "name": "Get post details",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/posts/details"
+                    }
+                },
+                {
+                    "name": "Get posts with comment count",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/posts/comment-count"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Comments",
+            "item": [
+                {
+                    "name": "Create comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"PostId\": {{postId}},\n  \"UserId\": {{userId}},\n  \"content\": \"A comment from Postman.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/comments"
+                    }
+                },
+                {
+                    "name": "Find or create comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"PostId\": {{postId}},\n  \"UserId\": {{userId}},\n  \"content\": \"A unique comment from Postman.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/comments/find-or-create"
+                    }
+                },
+                {
+                    "name": "Search comments",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/comments/search?word=Postman",
+                            "query": [
+                                {
+                                    "key": "word",
+                                    "value": "Postman"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get newest comments",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/comments/newest/{{postId}}"
+                    }
+                },
+                {
+                    "name": "Get comment details",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/comments/details/{{commentId}}"
+                    }
+                },
+                {
+                    "name": "Update comment",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"userId\": {{userId}},\n  \"content\": \"Updated comment from Postman.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/comments/{{commentId}}"
+                    }
+                }
+            ]
+        }
+    ]
+}
